@@ -14,7 +14,8 @@ function App() {
   }, []);
 
   const loadData = async () => {
-    const cards = await fetchApi();
+    const response = await fetchApi("GET");
+    const cards = await response.json();
     setCards(cards);
   };
 
@@ -27,13 +28,21 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (form.content) {
-      const response = await fetchApi(form);
+      const response = await fetchApi("POST", form);
       if (response.status === 204) {
         loadData();
         setForm((prevForm) => ({
           content: "",
         }));
       }
+    }
+  };
+
+  const handleDelete = async (e, id) => {
+    e.preventDefault();
+    const response = await fetchApi("DELETE", null, id);
+    if (response.status === 204) {
+      loadData();
     }
   };
 
@@ -45,7 +54,7 @@ function App() {
       </div>
       <div className="app__cards">
         {cards.map((el) => {
-          return <Card key={el.id} {...el} />;
+          return <Card key={el.id} onDelete={handleDelete} {...el} />;
         })}
       </div>
       <Form {...form} onChange={handleChange} onSubmit={handleSubmit} />

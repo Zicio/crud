@@ -1,21 +1,33 @@
-const fetchApi = async (data) => {
-  const url = "http://localhost:7777/notes";
+const fetchApi = async (method, data, id) => {
+  const url = new URL("http://localhost:7777/notes");
   let response;
-  let result;
-  if (data) {
-    response = await fetch(url, {
-      method: "POST",
-      body: JSON.stringify(data),
-    });
-    if (response.ok) {
-      return response;
+  // eslint-disable-next-line default-case
+  switch (method) {
+    case "GET": {
+      response = await fetch(url);
+      break;
     }
+    case "POST": {
+      response = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+      break;
+    }
+    case "DELETE":
+      const newUrl = new URL("http://localhost:7777/notes");
+      newUrl.searchParams.set("id", `${id}`);
+      response = await fetch(newUrl, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      break;
   }
-  response = await fetch(url);
+
   if (response.ok) {
-    result = await response.json();
-    console.log(result);
-    return result;
+    return response;
   }
 };
 
