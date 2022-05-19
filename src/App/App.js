@@ -46,11 +46,18 @@ function App() {
     }
   };
 
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    loadData();
+  };
+
   return (
     <main className="app">
       <div className="app__title">
         <h1 className="title-text">Notes</h1>
-        <button className="app__update">🗘</button>
+        <button className="app__update" onClick={handleUpdate}>
+          🗘
+        </button>
       </div>
       <div className="app__cards">
         {cards.map((el) => {
