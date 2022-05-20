@@ -28,6 +28,8 @@ const fetchApi = async (method, data, id) => {
 
   if (response.ok) {
     return response;
+  } else {
+    alert("HTTP-Error: " + response.status);
   }
 };
 
