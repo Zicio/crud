@@ -1,3 +1,4 @@
+import "./App.scss";
 import { useState, useEffect } from "react";
 import Card from "../Components/Card/Card";
 import Form from "../Components/Form/Form";
@@ -31,9 +32,9 @@ function App() {
       const response = await fetchApi("POST", form);
       if (response.status === 204) {
         loadData();
-        setForm((prevForm) => ({
+        setForm({
           content: "",
-        }));
+        });
       }
     }
   };
@@ -49,7 +50,7 @@ function App() {
   return (
     <main className="app">
       <div className="app__title">
-        <h1 className="title-text">Notes</h1>
+        <h1 className="title__text">Notes</h1>
         <button className="app__update">🗘</button>
       </div>
       <div className="app__cards">

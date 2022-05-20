@@ -1,0 +1,24 @@
+.card {
+  border: 1px solid black;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+
+  .card__delete {
+    all: unset;
+    position: absolute;
+    right: -12px;
+    top: -12px;
+    border: 1px solid black;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: white;
+    cursor: pointer;
+  }
+
+  .card__delete:hover {
+    background-color: black;
+  }
+}

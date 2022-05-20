@@ -1,3 +1,6 @@
+import "./Form.scss";
+import PropTypes from "prop-types";
+
 const Form = ({ onChange, onSubmit, ...props }) => {
   const handleChange = ({ target }) => {
     const name = target.name;
@@ -7,8 +10,9 @@ const Form = ({ onChange, onSubmit, ...props }) => {
 
   return (
     <form className="app__form" onSubmit={onSubmit}>
-      <label htmlFor="">New Note</label>
+      <label className="form__label">New Note</label>
       <textarea
+        className="form__input"
         name="content"
         id="new"
         cols="50"
@@ -17,9 +21,17 @@ const Form = ({ onChange, onSubmit, ...props }) => {
         value={props.content}
         required
       ></textarea>
-      <button type="submit">➤</button>
+      <button className="form__submit" type="submit">
+        ➤
+      </button>
     </form>
   );
+};
+
+Form.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  content: PropTypes.string.isRequired,
 };
 
 export default Form;
