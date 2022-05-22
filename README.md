@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/jt52eak1h7blrbwk?svg=true)](https://ci.appveyor.com/project/Zicio/crud)
+
 [Ссылка на GP](https://zicio.github.io/crud/)
 
 [Ссылка на задание](https://github.com/netology-code/ra16-homeworks/tree/master/lifecycle-http/crud)
